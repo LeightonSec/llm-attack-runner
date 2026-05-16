@@ -1,5 +1,6 @@
 # LLM Red Team Tool
 
+![Version](https://img.shields.io/badge/version-v1.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Payloads](https://img.shields.io/badge/payloads-65-orange)
@@ -189,6 +190,15 @@ Payloads live in `payloads/*.json`. Each entry follows this schema:
   "payload": "The exact prompt text to send."
 }
 ```
+
+---
+
+## Limitations
+
+- Keyword scoring is tuned for English — may miss compliance signals in other languages
+- Rate limiting and timeout behaviour vary per target — results are not directly comparable across different endpoints
+- In-memory only — no persistent state between runs
+- `datetime.utcnow()` deprecated in Python 3.12+ — harmless for now but will be addressed
 
 ---
 
