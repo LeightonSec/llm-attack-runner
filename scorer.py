@@ -8,7 +8,7 @@ load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 try:
     import anthropic
-    _client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY', ''))
+    _client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY', ''))  # gate: ignore — optional semantic scoring layer; API key optional, falls back to keyword-only without it
     API_AVAILABLE = bool(os.environ.get('ANTHROPIC_API_KEY'))
 except Exception:
     # Catches ImportError and any SDK init errors (e.g. invalid/empty key at construction)
@@ -64,7 +64,7 @@ def _api_score(prompt: str, response: str) -> str:
     if not API_AVAILABLE:
         return 'UNCLEAR'
     try:
-        msg = _client.messages.create(
+        msg = _client.messages.create(  # gate: ignore — sends truncated ambiguous (prompt, response) pair to Claude Haiku for semantic verdict; fallback scoring only
             model='claude-haiku-4-5-20251001',
             max_tokens=32,
             system=(

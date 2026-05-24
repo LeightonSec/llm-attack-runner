@@ -14,7 +14,7 @@ def _fire(target: str, payload_text: str, request_field: str,
         **extra_headers,
     }
     try:
-        resp = requests.post(
+        resp = requests.post(  # gate: ignore — red team tool by design: fires attack payloads at authorised target LLM endpoints, documented in Gate 2 trust boundary map
             target,
             json={request_field: payload_text},
             headers=headers,
