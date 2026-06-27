@@ -1,8 +1,9 @@
 import json
 import os
+
 import pytest
 
-from report import generate_report, save_report, _sanitise_target
+from report import _sanitise_target, generate_report, save_report
 
 
 def _make_result(verdict, category='jailbreak'):

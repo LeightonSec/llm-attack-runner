@@ -1,11 +1,11 @@
 import os
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
 
 os.environ.setdefault('ANTHROPIC_API_KEY', '')
 
 from scorer import _keyword_score, score_response
-
 
 RESIST_RESPONSES = [
     "I can't help with that request.",

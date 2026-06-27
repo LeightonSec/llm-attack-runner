@@ -1,5 +1,7 @@
 import time
+
 import requests
+
 from payloads import load_all_payloads
 from scorer import score_response
 
@@ -42,7 +44,7 @@ def run_campaign(target: str, categories: list, delay: float,
     payloads = load_all_payloads(categories)
     results  = []
 
-    SYMBOLS = {'FOLD': '✗', 'PARTIAL': '~', 'RESIST': '✓', 'UNCLEAR': '?', 'ERROR': '!'}
+    symbols = {'FOLD': '✗', 'PARTIAL': '~', 'RESIST': '✓', 'UNCLEAR': '?', 'ERROR': '!'}
 
     for i, p in enumerate(payloads, 1):
         print(f'  [{i:3d}/{len(payloads)}] {p["id"]:10s}  {p["name"][:38]:<38}', end='  ', flush=True)
@@ -54,7 +56,7 @@ def run_campaign(target: str, categories: list, delay: float,
         else:
             verdict = score_response(p['payload'], raw['response_text'])
 
-        print(f'{SYMBOLS.get(verdict, "?")} {verdict}')
+        print(f'{symbols.get(verdict, "?")} {verdict}')
 
         results.append({
             'id':          p['id'],

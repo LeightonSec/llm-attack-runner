@@ -96,7 +96,7 @@ Verdicts:
 ## Setup
 
 ```bash
-cd /path/to/llm-redteam
+cd /path/to/llm-attack-runner
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env   # add ANTHROPIC_API_KEY for semantic scoring

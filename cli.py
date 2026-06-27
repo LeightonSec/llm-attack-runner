@@ -7,8 +7,8 @@ import argparse
 import sys
 from urllib.parse import urlparse
 
-from runner import run_campaign
 from report import generate_report, save_report
+from runner import run_campaign
 
 CATEGORIES = [
     'jailbreak',

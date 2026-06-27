@@ -70,7 +70,7 @@ to measure what gets through.
 
 ## Current Status
 
-✅ Complete — LeightonSec/llm-redteam
+✅ Complete — LeightonSec/llm-attack-runner
 ✅ 65 payloads across 5 categories
 ✅ Two-layer scoring: keyword regex + Claude Haiku semantic
 ✅ Authorisation gate — hostname confirmation required before firing
@@ -87,7 +87,7 @@ to measure what gets through.
 
 ## Known Issues
 
-- `datetime.utcnow()` deprecated in Python 3.12+ — replace with `datetime.now(datetime.UTC)` in report.py
+- ~~`datetime.utcnow()` deprecated in Python 3.12+~~ — FIXED in report.py using `datetime.now(timezone.utc)` (the 3.10-floor-safe form; note `datetime.UTC` is 3.11+ only and would break the 3.10 CI matrix)
 - In-memory only — no persistent state between runs
 - Keyword patterns tuned for English — may miss non-English compliance signals
 

@@ -1,5 +1,6 @@
 import pytest
-from payloads import load_payloads, load_all_payloads
+
+from payloads import load_all_payloads, load_payloads
 
 KNOWN_CATEGORIES = ['jailbreak', 'prompt_injection', 'data_extraction',
                     'social_engineering', 'reconnaissance']

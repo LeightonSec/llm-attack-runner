@@ -1,0 +1,22 @@
+# llm-attack-runner is a flat-module application (cli.py, runner.py, scorer.py,
+# report.py at repo root) launched via `python3 cli.py`, NOT an installable
+# package. So there is deliberately no [build-system]/[project] table and CI
+# does not `pip install -e .`.
+#
+# NOTE on test import resolution: there is intentionally NO pythonpath setting.
+# tests/ is a package (tests/__init__.py) and the repo root is not, so pytest's
+# default prepend import mode inserts the repo root into sys.path and the flat
+# `from runner import ...` imports resolve on their own. Verified with bare
+# `pytest` from the repo root (57 passed). Adding pythonpath = ["."] here would
+# be redundant — do not add it.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "UP"]
+ignore = ["E501"]

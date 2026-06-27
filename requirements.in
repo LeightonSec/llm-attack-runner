@@ -1,0 +1,10 @@
+# Direct runtime dependencies for llm-attack-runner.
+# Compile with: uv pip compile requirements.in -o requirements.txt \
+#   --universal --generate-hashes --python-version 3.10
+# (3.10 is the CI matrix floor; compiling on a newer Python drops
+#  version-gated transitives that --require-hashes then rejects.)
+# anthropic is optional at runtime (semantic scoring falls back to
+# keyword-only without an API key) but is pinned so the lockfile is complete.
+anthropic
+requests
+python-dotenv
